@@ -19,7 +19,7 @@ class Gallery extends React.Component {
   render() {
     // const {} = this.props;
     return (
-      <div style={}>
+      <div>
         <input type="text" />
         <div class="gallery">
         </div>
