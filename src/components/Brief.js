@@ -1,5 +1,14 @@
 import React from 'react';
 
+const questionSet = [
+  {
+    name: '',
+    type: 'checkbox',
+    possibleValues: ['high' ]
+  },
+]
+
+
 class Brief extends React.Component {
 
   componentDidMount() {
@@ -15,7 +24,6 @@ class Brief extends React.Component {
           </label>
           <input type="text"/>
         </div>
-
         <div>
           <label>
             String here:
@@ -23,13 +31,22 @@ class Brief extends React.Component {
           <input type="checkbox" value="test" name="test"/>
           <input type="checkbox" value="test" name="test"/>
         </div>
+
+
+        <div>
+          <label>
+            QUality:
+          </label>
+          <input type="checkbox" value="lfskan" name="test"/>
+          <input type="checkbox" value="fsd" name="test"/>
+        </div>
         
         <div>
           <label>
             String here:
           </label>
           <input type="radio" value="some" name="test"/>
-          <input type="raiod" value="value" name="test"/>
+          <input type="radio" value="value" name="test"/>
         </div>
 
         <div>
@@ -45,7 +62,7 @@ class Brief extends React.Component {
         </div>
 
         <input type="text" />
-        <div class="gallery">
+        <div className="gallery">
         </div>
       </div>
     );
