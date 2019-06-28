@@ -687,9 +687,8 @@ class ClusterComponent extends Component {
 constructor(props) 
     { 
         super(props); 
-        this.state = { cluster : "" }; 
+        this.state = { cluster : [] }; 
     } 
-
 histograms = [];
   
  getHistogram = async () => {
@@ -714,25 +713,26 @@ histograms = [];
 }
   
 
-cluster = () => {
+clusterKMeans = () => {
     // this.props.images is now an array of objects that has URL as well as palette
     console.log(this.histograms.length);
-    return kmeans(this.histograms, 2);
+    this.cluster = kmeans(this.histograms, 2);
+    return this.cluster;
 }
 
-getPaletteCluster = async () => {
+getPaletteCluster = () => {
   // loop over array
   // get palette and add it to object
  
     // return <img src={this.props.images[0].url}></img>
     
-    await this.getHistogram().then(() => {
-        let clusters = this.cluster();
-        console.log(clusters);
-        return clusters.clusters;
+    this.getHistogram().then(() => {
+        let clusters = this.clusterKMeans();
+        console.log(clusters.clusters);
+        this.setState({cluster: clusters.clusters});
     });
     
-
+    // return "Hello";
     
     // console.log(this.props.images);
     // console.log(this.histograms);
@@ -742,12 +742,11 @@ getPaletteCluster = async () => {
 }
 
      render () {
-        this.getPaletteCluster().then((res) => {
-            this.setState({cluster: res});
-        });
+        
         return (
             <div>
-                {this.state.cluster}
+                
+                {this.state.cluster.length != this.props.images.length ? this.getPaletteCluster() : this.state.cluster}
             </div>
         );
     }

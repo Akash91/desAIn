@@ -2,9 +2,12 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import ClusterComponent from './components/ClusterComponent';
-import Gallery from 'components/GalleryView.js';
+// import Gallery from 'components/GalleryView.js';
 
 import rake from 'rake-js';
+
+let url1 = "https://jariz.github.io/vibrant.js/examples/3.jpg";
+let url2 = "https://jariz.github.io/vibrant.js/examples/4.jpg";
 
 function App() {
   debugger;

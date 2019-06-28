@@ -3,12 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-<<<<<<< Updated upstream:package.json
     "rake-js": "^0.1.1",
-=======
     "image-js": "^0.21.6",
     "ml-kmeans": "^4.2.1",
->>>>>>> Stashed changes:code/package.json
     "react": "^16.8.6",
     "react-color-thief": "git+https://github.com/chensiun/react-color-thief.git",
     "react-dom": "^16.8.6",
