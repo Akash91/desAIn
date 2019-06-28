@@ -1,7 +1,9 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import ClusterComponent from './components/ClusterComponent';
 import Gallery from 'components/GalleryView.js';
+
 import rake from 'rake-js';
 
 function App() {
@@ -25,6 +27,8 @@ function App() {
           Learn React
         </a> */}
       </header>
+      <ClusterComponent images={[{url:url1},{url:url2},{url:url2},{url:url1},{url:url2}]} />
+
       <div>
       </div>
     </div>
