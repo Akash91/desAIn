@@ -11,10 +11,14 @@ function App() {
   return (
     <div className="App">
       <header>
-      </header>    
-      <Gallery/>
+      </header>
+      {
+        <Brief/>
+      }
+      {
+        <Gallery/>
+      }
       {/* <ClusterComponent images={[{url:url1},{url:url2},{url:url2},{url:url1},{url:url2}]} /> */}
-      {/* <Brief/> */}
     </div>
   );
 }

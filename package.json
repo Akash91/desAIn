@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "rake-js": "^0.1.1",
     "image-js": "^0.21.6",
     "ml-kmeans": "^4.2.1",
+    "rake-js": "^0.1.1",
     "react": "^16.8.6",
     "react-color-thief": "git+https://github.com/chensiun/react-color-thief.git",
     "react-dom": "^16.8.6",
@@ -40,6 +40,8 @@
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.4.4",
     "@babel/preset-env": "^7.4.5",
-    "@babel/runtime": "^7.4.5"
+    "@babel/runtime": "^7.4.5",
+    "bootstrap": "^4.3.1",
+    "react-bootstrap": "^1.0.0-beta.9"
   }
 }

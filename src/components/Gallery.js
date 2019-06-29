@@ -2,7 +2,6 @@ import React from 'react';
 import { fetchData } from '../actions';
 import { listOfQueryUrls } from '../constants/urls';
 import { connect } from 'react-redux';
-import { debuggerStatement } from '@babel/types';
 
 class Gallery extends React.Component {
 
@@ -13,7 +12,32 @@ class Gallery extends React.Component {
     //   fast,
     //   packaging,
     // }
-    const searchList = ["sky", "blue", "fast", "sky packaging", "fast packaging", "blue packaging"];
+    // const searchList = ["fresh natural packaging", "abstract fruit imagery", "packaging", "fresh juice", "fruit juice", "fruit packaging"];
+    const searchList = ["Delicious Fruit Juice",
+      "Organic Fruit Juice",
+      "Sugar-free Fruit Juice", 
+      "Healthy Fruit Juice",
+      "Nutritional Fruit Juice",
+      "Fresh Fruit Juice",
+      "Natural Fruit Juice",
+      
+      "Refreshing Fruit Juice",
+      "Revitalizing Fruit Juice",
+      "Energizing Fruit Juice",
+      "Feel Good Fruit Juice ",
+      
+      "Travellers Millennials",
+      "Health-conscious Millennials",
+      "Fun loving Millennials",
+      "Educated Millennials",
+      "Busy Millennials",
+      
+      "Modern Imagery",
+      "Vibrant Imagery",
+      "Bold Imagery",
+      "Playful Imagery",
+      "Economical Imagery",
+      ];
     Object.keys(listOfQueryUrls).forEach(eachSource => {
       searchList.forEach(eachListItem => {
         const urlObj = {
@@ -27,7 +51,6 @@ class Gallery extends React.Component {
 
   render() {
     const { list } = this.props;
-    debugger;
     return (
       <div>
         <div className="gallery">

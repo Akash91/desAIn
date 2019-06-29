@@ -2,8 +2,9 @@ import React from 'react';
 
 const questionSet = [
   {
-    name: '',
-    type: 'checkbox',
+    label: 'What is your product?',
+    name: 'aboutProduct',
+    type: 'text',
     possibleValues: ['high' ]
   },
 ]
@@ -18,52 +19,32 @@ class Brief extends React.Component {
     // const {} = this.props;
     return (
       <div>
-        <div>
-          <label>
-            String here:
-          </label>
-          <input type="text"/>
-        </div>
-        <div>
-          <label>
-            String here:
-          </label>
-          <input type="checkbox" value="test" name="test"/>
-          <input type="checkbox" value="test" name="test"/>
-        </div>
+        {/* <Form>
+          {
+            questionSet.map((eachSet) => {
+              if(eachSet.type === '') {
+                <Form.Group controlId="formBasicEmail">
+                  <Form.Label>eachSet.label</Form.Label>
+                  <Form.Control type="text" placeholder="" name="" />
+                  <Form.Text className="text-muted">
+                    We'll never share your email with anyone else.
+                  </Form.Text>
+                </Form.Group>
+              }
+            })
+          }
 
-
-        <div>
-          <label>
-            QUality:
-          </label>
-          <input type="checkbox" value="lfskan" name="test"/>
-          <input type="checkbox" value="fsd" name="test"/>
-        </div>
-        
-        <div>
-          <label>
-            String here:
-          </label>
-          <input type="radio" value="some" name="test"/>
-          <input type="radio" value="value" name="test"/>
-        </div>
-
-        <div>
-          <label>
-            String here:
-          </label>
-          <select>
-            <option value="test">test</option>
-            <option value="hello">hello</option>
-            <option value="fail">fail</option>
-            <option value="success">success</option>
-          </select>
-        </div>
-
-        <input type="text" />
-        <div className="gallery">
-        </div>
+          <Form.Group controlId="formBasicPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control type="password" placeholder="Password" />
+          </Form.Group>
+          <Form.Group controlId="formBasicChecbox">
+            <Form.Check type="checkbox" label="Check me out" />
+          </Form.Group>
+          <Button variant="primary" type="submit">
+            Submit
+          </Button>
+        </Form> */}
       </div>
     );
   }
