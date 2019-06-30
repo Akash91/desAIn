@@ -60,13 +60,13 @@ class Gallery extends React.Component {
     return (
       <div>
         <div className="gallery">
-          {
+          {/* {
             list && list.length > 0 ? 
               list.map(eachListItem => {
                 return <img src={eachListItem.url}/>
               })
             : null
-          }
+          } */}
         </div>
       </div>
     );

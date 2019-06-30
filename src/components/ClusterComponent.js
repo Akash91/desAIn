@@ -788,7 +788,7 @@ clusterKMeans = () => {
     // this.props.images is now an array of objects that has URL as well as palette
     // console.log(this.histograms.length);
     // console.log(this.histograms.length);
-    this.cluster = kmeans(this.histograms, this.numberOfClusters, {maxIterations: 1000});
+    this.cluster = kmeans(this.histograms, this.numberOfClusters, {maxIterations: 100});
     return this.cluster;
 }
 
