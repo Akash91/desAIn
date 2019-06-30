@@ -61,7 +61,7 @@ class Gallery extends React.Component {
     // debugger;
     return (
       <div>
-        <div className="gallery">
+        <div className="hide">
           {/* {
             list && list.length > 0 ? 
               list.map(eachListItem => {

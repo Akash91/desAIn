@@ -40,6 +40,9 @@ label {
   width: 40%;
   display: inline-block;
 }
+.hide {
+  display: none;
+}
 
 @keyframes App-logo-spin {
   from {

@@ -74,7 +74,10 @@ class App extends React.Component {
         }
         {
           this.state.shown === 'moodboard' ?
-          <ClusterComponent />
+          <>
+            <Gallery moveTo={this.sectionShown}/>
+            <ClusterComponent />
+          </>
           : null
         }
         </div>
