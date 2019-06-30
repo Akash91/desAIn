@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 class Gallery extends React.Component {
 
-  componentDidMount() {
+  componentDidMount(dispatch) {
     // const keywordObj = {
     //   sky,
     //   blue,
@@ -51,12 +51,7 @@ class Gallery extends React.Component {
       });
     });
     beforeFetchStart(true);
-    const promiseArr = promiseUrlObj.map(eachUrlObj => {
-      fetchImages(eachUrlObj);
-    });
-    setTimeout(() => {
-      afterFetchComplete(false);
-    }, 1500);
+    fetchImages(promiseUrlObj);
   }
 
   render() {
@@ -88,7 +83,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-      fetchImages: (url) => dispatch(fetchData(url)),
+      fetchImages: (urls) => dispatch(fetchData(urls)),
       beforeFetchStart: (isGalleryLoading) => dispatch(beforeFetchStart(isGalleryLoading)),
       afterFetchComplete: (isGalleryLoading) => dispatch(afterFetchComplete(isGalleryLoading)),
   };
