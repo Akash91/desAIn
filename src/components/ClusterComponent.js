@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Image } from 'image-js';
 import kmeans from 'ml-kmeans';
 import { connect } from 'react-redux';
+import ScrollableTabsButtonAuto from './ScrollableTabsButtonAuto';
 // import  * as forEach from 'p-iteration';
 
 
@@ -787,7 +788,7 @@ clusterKMeans = () => {
     // this.props.images is now an array of objects that has URL as well as palette
     // console.log(this.histograms.length);
     // console.log(this.histograms.length);
-    this.cluster = kmeans(this.histograms, this.numberOfClusters, {maxIterations: 10000});
+    this.cluster = kmeans(this.histograms, this.numberOfClusters, {maxIterations: 500});
     return this.cluster;
 }
 
@@ -823,7 +824,7 @@ showClusters = () => {
         clusters[this.state.cluster[i]].push(<img src={this.props.images[i]}></img>)
     }
     console.log(clusters);
-    return clusters;
+    return <ScrollableTabsButtonAuto cluster={clusters} />;
 }
 
      render () {
@@ -833,8 +834,8 @@ showClusters = () => {
         
         return (
             <div>
-                
                 {once === false && this.props.isGalleryLoading === false && this.props.images.length > 0 ? this.getPaletteCluster() : this.showClusters()}
+                
             </div>
         );
     }
