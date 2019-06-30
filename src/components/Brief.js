@@ -1,44 +1,23 @@
 import React from 'react';
-
-const questionSet = [
-  {
-    label: 'What is your product?',
-    name: 'aboutProduct',
-    type: 'text',
-    possibleValues: ['high' ]
-  },
-  {
-    label: 'What is your product?',
-    name: 'aboutProduct',
-    type: 'text',
-    possibleValues: ['high' ]
-  },
-]
-
+import { connect } from 'react-redux';
+import { questionSet } from '../constants/brief';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 
 class Brief extends React.Component {
-
-  componentDidMount() {
-  }
+  
 
   render() {
-    // const {} = this.props;
     return (
       <div>
-        {/* <Form>
-          {
-            questionSet.map((eachSet) => {
-              if(eachSet.type === '') {
-                <Form.Group controlId="formBasicEmail">
-                  <Form.Label>eachSet.label</Form.Label>
-                  <Form.Control type="text" placeholder="" name="" />
-                  <Form.Text className="text-muted">
-                    We'll never share your email with anyone else.
-                  </Form.Text>
-                </Form.Group>
-              }
-            })
-          }
+        <Form>
+          <Form.Group controlId="formBasicEmail">
+            <Form.Label>Email address</Form.Label>
+            <Form.Control type="email" placeholder="Enter email" />
+            <Form.Text className="text-muted">
+              We'll never share your email with anyone else.
+            </Form.Text>
+          </Form.Group>
 
           <Form.Group controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
@@ -50,10 +29,19 @@ class Brief extends React.Component {
           <Button variant="primary" type="submit">
             Submit
           </Button>
-        </Form> */}
+        </Form>
       </div>
     );
   }
 }
 
-export default Brief;
+const mapStateToProps = (state) => {
+  return {
+      // items: state.items,
+      // hasErrored: state.itemsHasErrored,
+      isGalleryLoading: state.isGalleryLoading,
+      list: state.list,
+  };
+};
+
+export default connect(mapStateToProps)(Brief);

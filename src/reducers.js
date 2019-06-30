@@ -3,6 +3,7 @@ import * as TYPES from './Types';
 const initialState = {
   temp:[],
   isGalleryLoading: false,
+  user: {},
 };
 
 export default(state = initialState, action) => {

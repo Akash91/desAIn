@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "bootstrap": "^4.3.1",
     "image-js": "^0.21.6",
     "ml-kmeans": "^4.2.1",
     "rake-js": "^0.1.1",
@@ -10,6 +11,7 @@
     "react-color-thief": "git+https://github.com/chensiun/react-color-thief.git",
     "react-dom": "^16.8.6",
     "react-redux": "^7.1.0",
+    "react-redux-form": "^1.16.13",
     "react-router": "^5.0.1",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
@@ -41,7 +43,6 @@
     "@babel/plugin-transform-runtime": "^7.4.4",
     "@babel/preset-env": "^7.4.5",
     "@babel/runtime": "^7.4.5",
-    "bootstrap": "^4.3.1",
     "react-bootstrap": "^1.0.0-beta.9"
   }
 }
