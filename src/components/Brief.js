@@ -7,6 +7,12 @@ const questionSet = [
     type: 'text',
     possibleValues: ['high' ]
   },
+  {
+    label: 'What is your product?',
+    name: 'aboutProduct',
+    type: 'text',
+    possibleValues: ['high' ]
+  },
 ]
 
 

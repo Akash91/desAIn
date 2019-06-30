@@ -38,7 +38,6 @@ export function fetchData(urlObj) {
   // }
   return (dispatch) => {
     dispatch(itemsIsLoading(true));
-    // console.log(headerObj,'a');
     fetch(urlObj.url, {
       method: "GET",
       contentType: 'application/json',
@@ -65,6 +64,21 @@ export function itemsHasErrored(bool) {
       hasErrored: bool
   };
 }
+
+export function beforeFetchStart(bool) {
+  return {
+      type: TYPES.BEFORE_FETCH_START,
+      isGalleryLoading: bool
+  };
+}
+
+export function afterFetchComplete(bool) {
+  return {
+      type: TYPES.AFTER_FETCH_COMPLETE,
+      isGalleryLoading: bool
+  };
+}
+
 export function itemsIsLoading(bool) {
   return {
       type: TYPES.FETCH_IMAGES_STARTED,

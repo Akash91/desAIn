@@ -1,5 +1,5 @@
 import React from 'react';
-import { fetchData } from '../actions';
+import { fetchData, beforeFetchStart, afterFetchComplete } from '../actions';
 import { listOfQueryUrls } from '../constants/urls';
 import { connect } from 'react-redux';
 
@@ -38,15 +38,25 @@ class Gallery extends React.Component {
       "Playful Imagery",
       "Economical Imagery",
       ];
+
+    const { fetchImages, beforeFetchStart, afterFetchComplete} = this.props;
+    const promiseUrlObj = [];
     Object.keys(listOfQueryUrls).forEach(eachSource => {
       searchList.forEach(eachListItem => {
         const urlObj = {
           url: listOfQueryUrls[eachSource]+eachListItem,
           source: eachSource,
         }
-        this.props.fetchImages(urlObj);
+        promiseUrlObj.push(urlObj);
       });
     });
+    beforeFetchStart(true);
+    const promiseArr = promiseUrlObj.map(eachUrlObj => {
+      fetchImages(eachUrlObj);
+    });
+    setTimeout(() => {
+      afterFetchComplete(false);
+    }, 1500);
   }
 
   render() {
@@ -71,14 +81,16 @@ const mapStateToProps = (state) => {
   return {
       // items: state.items,
       // hasErrored: state.itemsHasErrored,
-      // isLoading: state.itemsIsLoading
+      isGalleryLoading: state.isGalleryLoading,
       list: state.list,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-      fetchImages: (url) => dispatch(fetchData(url))
+      fetchImages: (url) => dispatch(fetchData(url)),
+      beforeFetchStart: (isGalleryLoading) => dispatch(beforeFetchStart(isGalleryLoading)),
+      afterFetchComplete: (isGalleryLoading) => dispatch(afterFetchComplete(isGalleryLoading)),
   };
 };
 
