@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Image } from 'image-js';
 import kmeans from 'ml-kmeans';
+import { connect } from 'react-redux';
+// import  * as forEach from 'p-iteration';
+
 
 // import * as Vibrant from 'node-vibrant';
 /*
@@ -674,6 +677,8 @@ var MMCQ = (function() {
     };
 })();
 
+let once = false;
+
 class ClusterComponent extends Component {
 
 // accepts an array of objects [{},{},...]
@@ -690,33 +695,99 @@ constructor(props)
         this.state = { cluster : [] }; 
     } 
 histograms = [];
-  
+numberOfClusters = 5;  
+palettes = [];
+
  getHistogram = async () => {
     let colorThief = new ColorThief();
-    for (let i=0;i<this.props.images.length;i++) {
-        // let palette = Vibrant.from(this.props.images[i].url)
-        // .getPalette()
-        // .then((palette) => {
-        //     console.log(palette)
-        //     this.props.images[i].palette = palette;
-        //     // console.log(this.props)
-        // })
-        let image = await Image.load(this.props.images[i].url);
-        let histogram = image.getColorHistogram({nbSlots: 512});
+    // return await forEach(this.props.images, async (i) => {
+    //     console.log(i);
+    //     debugger;
+    //     let image = await Image.load(i.url);
+    //     debugger;
+    //     let histogram = image.getColorHistogram({nbSlots: 512});
+    //     this.histograms.push(histogram);
+    //     colorThief.getPaletteFromUrl(i.url, (palette) => {
+    //         i.palette = palette;
+    //     });
+    // });
+
+
+
+
+
+    var j=0;
+    for (let i of this.props.images) {
+        
+        console.log('test', j);
+        // debugger;
+        let image = await Image.load(i);
+        // debugger;
+        let histogram = image.getColorHistogram({useAlpha: true, nbSlots: 64});
         this.histograms.push(histogram);
-        colorThief.getPaletteFromUrl(this.props.images[i].url, (palette) => {
-            this.props.images[i].palette = palette;
-        });
+        // colorThief.getPaletteFromUrl(i.url, (palette) => {
+        //     i.palette = palette;
+        //     this.palettes.push(palette);
+        // });
+        j++;
     }
-    // console.log(histogram);
+    console.log('length------------------------------------------',this.props.images.length)
+
+
+
+
+    // for (var i=0;i<this.props.images.length;i++) {
+    //     // let palette = Vibrant.from(this.props.images[i].url)
+    //     // .getPalette()
+    //     // .then((palette) => {
+    //     //     console.log(palette)
+    //     //     this.props.images[i].palette = palette;
+    //     //     // console.log(this.props)
+    //     // })
+        
+    //     console.log('test', i);
+    //     // debugger;
+    //     let image = await Image.load(this.props.images[i].url);
+    //     // debugger;
+    //     let histogram = image.getColorHistogram({nbSlots: 512});
+    //     this.histograms.push(histogram);
+    //     // colorThief.getPaletteFromUrl(this.props.images[i].url, (palette) => {
+    //     //     this.props.images[i].palette = palette;
+    //     // });
+    // }
+
+    // debugger;
+    // let _ = this.props.images.map(async image => {
+    //     let i = await Image.load(image.url);
+    //     let histogram = i.getColorHistogram({nbSlots: 512});
+    //     this.histograms.push(histogram);
+    //     colorThief.getPaletteFromUrl(image.url, (palette) => {
+    //         image.palette = palette;
+    //         this.palettes.push(palette);
+    //     });
+    //     return 1;
+    // });
+    // debugger;
+
+    // for (var i=0;i<images.length;i++) {
+    //     let histogram = images[i].getColorHistogram({nbSlots: 512});
+    //     this.histograms.push(histogram);
+    //     colorThief.getPaletteFromUrl(this.props.images[i].url, (palette) => {
+    //         this.props.images[i].palette = palette;
+    //     });
+    // }
+
+
+    console.log(this.histograms);
     return this.histograms;
 }
   
 
 clusterKMeans = () => {
     // this.props.images is now an array of objects that has URL as well as palette
-    console.log(this.histograms.length);
-    this.cluster = kmeans(this.histograms, 2);
+    // console.log(this.histograms.length);
+    // console.log(this.histograms.length);
+    this.cluster = kmeans(this.histograms, this.numberOfClusters, {maxIterations: 10000});
     return this.cluster;
 }
 
@@ -725,7 +796,8 @@ getPaletteCluster = () => {
   // get palette and add it to object
  
     // return <img src={this.props.images[0].url}></img>
-    
+    once = true;    
+    console.log(this.props.images);
     this.getHistogram().then(() => {
         let clusters = this.clusterKMeans();
         console.log(clusters.clusters);
@@ -741,15 +813,38 @@ getPaletteCluster = () => {
     //  return "Hello"
 }
 
+showClusters = () => {
+    if (this.state.cluster.length === 0) {
+        return [];
+    }
+    let clusters = [[],[],[],[],[]];
+    // clusters.fill([],0,this.numberOfClusters+1);
+    for (let i=0;i<this.state.cluster.length;i++) {
+        clusters[this.state.cluster[i]].push(<img src={this.props.images[i]}></img>)
+    }
+    console.log(clusters);
+    return clusters;
+}
+
      render () {
+        // debugger;
+        console.log('=========================', this.props.isGalleryLoading);
+        
         
         return (
             <div>
                 
-                {this.state.cluster.length != this.props.images.length ? this.getPaletteCluster() : this.state.cluster}
+                {once === false && this.props.isGalleryLoading === false && this.props.images.length > 0 ? this.getPaletteCluster() : this.showClusters()}
             </div>
         );
     }
 }
 
-export default ClusterComponent;
+const mapStateToProps = (state) => {
+    return {
+        images: state.list !== undefined ? [...new Set(state.list.map(item => item.url))] : [],
+        isGalleryLoading: state.isGalleryLoading,
+    };
+  };
+
+export default connect(mapStateToProps)(ClusterComponent);

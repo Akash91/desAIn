@@ -12,6 +12,7 @@ export default(state = initialState, action) => {
       return state;
     }
     case TYPES.FETCH_IMAGES_SUCCESS: {
+      
       const imgObjs = action.imgObjs;
       const newObj = {...state};
       if(state.list === undefined) {
@@ -20,6 +21,7 @@ export default(state = initialState, action) => {
       } else {
         newObj.list = state.list.concat(imgObjs);
       }
+      newObj.loaded = true;
       return newObj;
     }
     case TYPES.BEFORE_FETCH_START: {
@@ -30,6 +32,7 @@ export default(state = initialState, action) => {
     case TYPES.AFTER_FETCH_COMPLETE: {
       const newObj = {...state};
       newObj.isGalleryLoading = action.isGalleryLoading
+      console.log('from reducer: ',newObj.list.length, ' ; ');
       return newObj;
     }
     default:

@@ -90,7 +90,7 @@ export function itemsIsLoading(bool) {
 }
 export function itemsFetchDataSuccess(items, source) {
   let imgObjs = [];
-  console.log(items);
+  // console.log(items);
   if(source === 'RESHOT') {
     imgObjs = getReshotImg(items);
   }

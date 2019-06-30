@@ -56,16 +56,17 @@ class Gallery extends React.Component {
 
   render() {
     const { list } = this.props;
+    // debugger;
     return (
       <div>
         <div className="gallery">
-          {
+          {/* {
             list && list.length > 0 ? 
               list.map(eachListItem => {
                 return <img src={eachListItem.url}/>
               })
             : null
-          }
+          } */}
         </div>
       </div>
     );
@@ -76,7 +77,7 @@ const mapStateToProps = (state) => {
   return {
       // items: state.items,
       // hasErrored: state.itemsHasErrored,
-      isGalleryLoading: state.isGalleryLoading,
+      // isLoading: state.isLoading,
       list: state.list,
   };
 };
