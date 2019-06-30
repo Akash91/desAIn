@@ -39,7 +39,21 @@ class Brief extends React.Component {
         this.setState(form);
       }
     } else if(e.target.type === "radio"){
-      debugger;
+      const values = questionName[inpName];
+      if(values === undefined) {
+        form.questionName[inpName] = [value];
+        this.setState(form);
+      } else {
+        if(values.indexOf(value) === -1) {
+          if(e.target.checked) {
+            values.push(value);
+          } else {
+            values.splice(values.indexOf(value),1);
+          }
+        }
+        form.questionName[inpName] = values;
+        this.setState(form);
+      }
     }
   }
 

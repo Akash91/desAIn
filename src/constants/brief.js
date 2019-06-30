@@ -115,7 +115,7 @@ export const questionSet = [
   },
   {
     label: 'What does your brand stand for ?',
-    name: 'groupType',
+    name: 'brandStand',
     type: 'radio',
     possibleValues: [{
       radioName: 'radioA',

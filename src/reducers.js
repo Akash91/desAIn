@@ -13,6 +13,10 @@ const getSearchTerms = (formData) => {
       searchTerms.push(formData.questionName.groupType[i]+' '+formData.questionName.ageGroup[j]);
     }
   }
+  for(let i=0;i<formData.questionName.brandStand.length;i++) {
+    searchTerms.push(formData.questionName.brandStand[i]+' imagery');
+    searchTerms.push(formData.questionName.brandStand[i]+' packaging');
+  }
   return searchTerms;
 }
 
