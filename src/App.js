@@ -4,6 +4,8 @@ import './App.css';
 import ClusterComponent from './components/ClusterComponent';
 import Gallery from './components/Gallery.js';
 import Brief from './components/Brief.js';
+import MoodBoard from './components/Moodboard.js';
+
 
 let url1 = "https://homepages.cae.wisc.edu/~ece533/images/airplane.png";
 let url2 = "https://homepages.cae.wisc.edu/~ece533/images/arctichare.png";
@@ -39,32 +41,45 @@ let images = [
   {url:url15},
 ];
 
-function App() {
-  return (
-    <div className="App">
-      <header>
-        {/* <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a> */}
-      </header>
-      <Gallery/>
-      <ClusterComponent />
-      {/* <Brief/>
-      <Gallery/>
-       */}
-      <div>
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      shown: 'brief',
+    };
+  }
+
+  sectionShown = (string) => {
+    debugger;
+    this.setState({shown: string})
+  }
+
+
+  render() {
+    const { list } = this.props;
+    return (
+      <div className="App">
+        <header>
+        </header>
+        {
+          this.state.shown === 'brief' ?
+          <Brief moveTo={this.sectionShown}/>
+          : null
+        }
+        {
+          this.state.shown === 'gallery' ?
+          <Gallery moveTo={this.sectionShown}/>
+          : null
+        }
+        {
+          this.state.shown === 'moodboard' ?
+          <MoodBoard />
+          : null
+        }
+        {/* <ClusterComponent images={[{url:url1},{url:url2},{url:url2},{url:url1},{url:url2}]} /> */}
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default App;
