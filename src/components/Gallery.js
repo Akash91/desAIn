@@ -41,8 +41,10 @@ class Gallery extends React.Component {
 
     const { fetchImages, beforeFetchStart, afterFetchComplete} = this.props;
     const promiseUrlObj = [];
+    const searchTerms = this.props.searchTerms;
+    debugger;
     Object.keys(listOfQueryUrls).forEach(eachSource => {
-      searchList.forEach(eachListItem => {
+      searchTerms.forEach(eachListItem => {
         const urlObj = {
           url: listOfQueryUrls[eachSource]+eachListItem,
           source: eachSource,
@@ -79,6 +81,7 @@ const mapStateToProps = (state) => {
       // hasErrored: state.itemsHasErrored,
       // isLoading: state.isLoading,
       list: state.list,
+      searchTerms: state.searchTermArray,
   };
 };
 

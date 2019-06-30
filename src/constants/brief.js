@@ -31,8 +31,11 @@ export const questionSet = [
       label: 'Organic',
       value: 'ORGANIC',
     },{
-      label: 'Delicious',
-      value: 'DELICIOUS',
+      label: 'Healthy',
+      value: 'HEALTHY',
+    },{
+      label: 'Nutritional',
+      value: 'NUTRITIONAL',
     },{
       label: 'Sugar-free',
       value: 'SUGAR FREE',
@@ -54,6 +57,9 @@ export const questionSet = [
     },{
       label: 'Stimulating',
       value: 'STIMULATING',
+    },{
+      label: 'Engaging',
+      value: 'ENGAGING',
     }]
   },
   {
@@ -68,7 +74,7 @@ export const questionSet = [
       value: 'TEENAGERS',
     },{
       label: 'School kids',
-      value: 'SCHOOL_KIDS',
+      value: 'SCHOOL KIDS',
     },{
       label: 'Millennials',
       value: 'MILLENNIALS',
@@ -85,19 +91,57 @@ export const questionSet = [
     name: 'groupType',
     type: 'checkbox',
     possibleValues: [{
-      PREGNANT: 'Pregnant',
-      SICK: 'Sick',
-      BUSINESS_PERSON: 'Business person',
-      ATHLETE: 'Athlete',
-      TRAVELLER: 'Traveller',
-      PARENTS: 'Parents',
-      FOODIE: 'Foodie',
+      label: 'Pregnant',
+      value: 'PREGNANT',
+    },{
+      label: 'Sick',
+      value: 'SICK',
+    },{
+      label: 'Business person',
+      value: 'BUSINESS PERSON',
+    },{
+      label: 'Athlete',
+      value: 'ATHLETE',
+    },{
+      label: 'Traveller',
+      value: 'TRAVELLER',
+    },{
+      label: 'Parents',
+      value: 'PARENTS',
+    },{
+      label: 'Foodie',
+      value: 'FOODIE',
     }]
   },
   {
     label: 'What does your brand stand for ?',
     name: 'groupType',
     type: 'radio',
-    possibleValues: [],
+    possibleValues: [{
+      radioName: 'radioA',
+      label: 'Traditional',
+      value: 'Traditional',
+    },{
+      radioName: 'radioA',
+      label: 'Modern',
+      value: 'MODERN',
+    },{
+      radioName: 'radioB',
+      label: 'Vibrant',
+      value: 'VIBRANT',
+    },{
+      radioName: 'radioB',
+      label: 'Subtle',
+      value: 'SUBTLE',
+    },{
+      radioName: 'radioC',
+      label: 'Delicate',
+      value: 'DELICATE',
+    },{
+      radioName: 'radioC',
+      label: 'Bold',
+      value: 'BOLD',
+    }
+  ],
   },
 ]

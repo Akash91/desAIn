@@ -1,7 +1,23 @@
 import * as TYPES from './Types';
 
+const getSearchTerms = (formData) => {
+  let searchTerms = [];
+  searchTerms = searchTerms.concat(formData.questionName.emotionalBenefits.map((each) => {
+    return each + ' ' + formData.questionName.aboutProduct;
+  }));
+  searchTerms = searchTerms.concat(formData.questionName.tangibleBenefits.map((each) => {
+    return each + ' ' + formData.questionName.aboutProduct;
+  }));
+  for(let i=0;i<formData.questionName.groupType.length;i++) {
+    for(let j=0;j<formData.questionName.ageGroup.length;j++) {
+      searchTerms.push(formData.questionName.groupType[i]+' '+formData.questionName.ageGroup[j]);
+    }
+  }
+  return searchTerms;
+}
+
 const initialState = {
-  temp:[],
+  searchTermArray:[],
   isGalleryLoading: false,
   user: {},
 };
@@ -41,7 +57,8 @@ export default(state = initialState, action) => {
     case TYPES.SET_FORM_DATA: {
       const newObj = {...state};
       newObj.formData = action.formData;
-      return newObj.formData
+      newObj.searchTermArray = getSearchTerms(action.formData);
+      return newObj;
     }
     default:
       return state;

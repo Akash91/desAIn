@@ -4,7 +4,7 @@ import './App.css';
 import ClusterComponent from './components/ClusterComponent';
 import Gallery from './components/Gallery.js';
 import Brief from './components/Brief.js';
-import MoodBoard from './components/Moodboard.js';
+// import MoodBoard from './components/Moodboard.js';
 
 
 // let url1 = "https://homepages.cae.wisc.edu/~ece533/images/airplane.png";
@@ -50,7 +50,6 @@ class App extends React.Component {
   }
 
   sectionShown = (string) => {
-    debugger;
     this.setState({shown: string})
   }
 
@@ -59,14 +58,16 @@ class App extends React.Component {
     const { list } = this.props;
     return (
       <div className="App">
+        <h1>ᗪᗴᔕᗩᎥǤᑎ</h1>
         <header>
         </header>
+        <div className="aligner">
         {
           this.state.shown === 'brief' ?
           <Brief moveTo={this.sectionShown}/>
           : null
         }
-        {/* {
+        {
           this.state.shown === 'gallery' ?
           <Gallery moveTo={this.sectionShown}/>
           : null
@@ -75,10 +76,10 @@ class App extends React.Component {
           this.state.shown === 'moodboard' ?
           <ClusterComponent />
           : null
-        } */}
-        <Gallery moveTo={this.sectionShown}/>
-        <ClusterComponent />
+        }
+        </div>
         
+        {/* <ClusterComponent images={[{url:url1},{url:url2},{url:url2},{url:url1},{url:url2}]} /> */}
       </div>
     );
   }

@@ -31,16 +31,15 @@ class Brief extends React.Component {
         if(values.indexOf(value) === -1) {
           if(e.target.checked) {
             values.push(value);
-            // this.setState(form.questionName[inpName], values);
           } else {
             values.splice(values.indexOf(value),1);
-            // this.setState(form.questionName[inpName], values);
           }
         }
         form.questionName[inpName] = values;
         this.setState(form);
       }
-      // this.setState(e.target.label, value);
+    } else if(e.target.type === "radio"){
+      debugger;
     }
   }
 
@@ -48,7 +47,7 @@ class Brief extends React.Component {
     e.preventDefault();
     e.stopPropagation();
     this.props.setFormData(this.state.form);
-    this.props.moveTo('gallery');
+    this.props.moveTo('moodboard');
   }
 
   render() {
@@ -84,6 +83,24 @@ class Brief extends React.Component {
                           type="checkbox"
                           label={eachCheckbox.label}
                           data-label={eachCheckbox.label}
+                          onChange={(e) => this.handleChange(e, questionObj.name, eachCheckbox.value)}
+                        />
+                        })
+                      }
+                    </div>
+                  );
+                }
+                case 'radio': {
+                  return(
+                    <div>
+                      <Form.Label>{questionObj.label}</Form.Label>
+                      {
+                        questionObj.possibleValues.map(eachCheckbox => {
+                          return <Form.Check 
+                          type="radio"
+                          label={eachCheckbox.label}
+                          data-label={eachCheckbox.label}
+                          name={eachCheckbox.radioName}
                           onChange={(e) => this.handleChange(e, questionObj.name, eachCheckbox.value)}
                         />
                         })
