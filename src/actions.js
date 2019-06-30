@@ -13,7 +13,9 @@ const getReshotImg = (items) => {
 const getUnsplashImg = (items) => {
   return items.results.map((eachItem) => {
     return {
+      id: eachItem.id,
       url: eachItem.urls['thumb'],
+      smallUrl: eachItem.urls['small'],
       source: 'UNSPLASH',
     }
   });
@@ -101,4 +103,11 @@ export function itemsFetchDataSuccess(items, source) {
       type: TYPES.FETCH_IMAGES_SUCCESS,
       imgObjs
   };
+}
+
+export function setFormData(formData) {
+  return {
+    type: TYPES.SET_FORM_DATA,
+    formData: formData,
+  }
 }

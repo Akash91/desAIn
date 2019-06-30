@@ -4,11 +4,20 @@ export const questionSet = [
     name: 'aboutProduct',
     type: 'select',
     options: [{
-      WATER: 'Water',
-      ESD: 'Energy & Soft Drinks',
-      TEA: 'Tea',
-      FJD: 'Fruit Juices & Drinks',
-      COFFEE: 'Coffee',
+      label: 'Water',
+      value: 'WATER',
+    },{
+      label: 'Energy & Soft Drinks',
+      value: 'Energy and Soft Drinks',
+    },{
+      label: 'Tea',
+      value: 'TEA',
+    },{
+      label: 'Fruit Juices & Drinks',
+      value: 'Fruit Juices and Drinks',
+    }, {
+      label: 'Coffee',
+      value: 'COFFEE',
     }]
   },
   {
@@ -16,11 +25,17 @@ export const questionSet = [
     name: 'tangibleBenefits',
     type: 'checkbox',
     possibleValues: [{
-      DELICIOUS: 'Delicious',
-      ORGANIC: 'Organic',
-      SUGAR_FREE: 'Sugar-free',
-      HEALTHY: 'Healthy',
-      NUTRIONAL: 'Nutritional',
+      label: 'Delicious',
+      value: 'DELICIOUS',
+    },{
+      label: 'Organic',
+      value: 'ORGANIC',
+    },{
+      label: 'Delicious',
+      value: 'DELICIOUS',
+    },{
+      label: 'Sugar-free',
+      value: 'SUGAR FREE',
     }]
   },
   {
@@ -28,10 +43,17 @@ export const questionSet = [
     name: 'emotionalBenefits',
     type: 'checkbox',
     possibleValues: [{
-      REFRESHING: 'Refreshing',
-      ENERGIZING: 'Energizing',
-      FEEL_GOOD: 'Feel good',
-      STIMULATING: 'Stimulating',
+      label: 'Refreshing',
+      value: 'REFRESHING',
+    },{
+      label: 'Energizing',
+      value: 'ENERGIZING',
+    },{
+      label: 'Feel good',
+      value: 'FEEL GOOD',
+    },{
+      label: 'Stimulating',
+      value: 'STIMULATING',
     }]
   },
   {
@@ -39,12 +61,23 @@ export const questionSet = [
     name: 'ageGroup',
     type: 'checkbox',
     possibleValues: [{
-      BABIES: 'Babies',
-      TEENAGERS: 'Teenagers',
-      SCHOOL_KIDS: 'School kids',
-      MILLENNIALS: 'Millennials',
-      ADULTS: 'Adults',
-      ELDERLY: 'Elderly',
+      label: 'Babies',
+      value: 'BABIES',
+    },{
+      label: 'Teenagers',
+      value: 'TEENAGERS',
+    },{
+      label: 'School kids',
+      value: 'SCHOOL_KIDS',
+    },{
+      label: 'Millennials',
+      value: 'MILLENNIALS',
+    },{
+      label: 'Adults',
+      value: 'ADULTS',
+    },{
+      label: 'Elderly',
+      value: 'ELDERLY',
     }]
   },
   {

@@ -19,7 +19,10 @@ export default(state = initialState, action) => {
         newObj.emptyList = true;
         newObj.list = imgObjs;
       } else {
-        newObj.list = state.list.concat(imgObjs);
+        newObj.list = state.list.concat(
+          imgObjs.filter((object) => !state.list.map((x) => x.id).includes(object.uniqueId)),
+        );
+        // newObj.list = state.list.concat(imgObjs);
       }
       newObj.loaded = true;
       return newObj;
@@ -34,6 +37,11 @@ export default(state = initialState, action) => {
       newObj.isGalleryLoading = action.isGalleryLoading
       console.log('from reducer: ',newObj.list.length, ' ; ');
       return newObj;
+    }
+    case TYPES.SET_FORM_DATA: {
+      const newObj = {...state};
+      newObj.formData = action.formData;
+      return newObj.formData
     }
     default:
       return state;

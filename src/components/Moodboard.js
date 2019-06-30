@@ -3,7 +3,7 @@ import { fetchData, beforeFetchStart, afterFetchComplete } from '../actions';
 import { listOfQueryUrls } from '../constants/urls';
 import { connect } from 'react-redux';
 
-class Gallery extends React.Component {
+class Moodboard extends React.Component {
 
   componentDidMount(dispatch) {
     // const keywordObj = {
@@ -56,7 +56,6 @@ class Gallery extends React.Component {
 
   render() {
     const { list } = this.props;
-    // debugger;
     return (
       <div>
         <div className="gallery">
@@ -77,7 +76,7 @@ const mapStateToProps = (state) => {
   return {
       // items: state.items,
       // hasErrored: state.itemsHasErrored,
-      // isLoading: state.isLoading,
+      isGalleryLoading: state.isGalleryLoading,
       list: state.list,
   };
 };
@@ -90,4 +89,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Gallery);
+export default connect(mapStateToProps, mapDispatchToProps)(Moodboard);
