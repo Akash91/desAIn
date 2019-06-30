@@ -3,22 +3,41 @@ export const questionSet = [
     label: 'What is your product?',
     name: 'aboutProduct',
     type: 'select',
-    options: [{
-      label: 'Water',
-      value: 'WATER',
-    },{
-      label: 'Energy & Soft Drinks',
-      value: 'Energy and Soft Drinks',
-    },{
-      label: 'Tea',
-      value: 'TEA',
-    },{
-      label: 'Fruit Juices & Drinks',
-      value: 'Fruit Juices and Drinks',
-    }, {
-      label: 'Coffee',
-      value: 'COFFEE',
-    }]
+    // options: [{
+    //   label: 'Water',
+    //   value: 'WATER',
+    // },{
+    //   label: 'Energy & Soft Drinks',
+    //   value: 'Energy and Soft Drinks',
+    // },{
+    //   label: 'Tea',
+    //   value: 'TEA',
+    // },{
+    //   label: 'Fruit Juices & Drinks',
+    //   value: 'Fruit Juices and Drinks',
+    // }, {
+    //   label: 'Coffee',
+    //   value: 'COFFEE',
+    // }]
+    options: [
+      {label: 'Packaged Water',value: 'Packaged Water'},
+      {label: 'Spring Water',value: 'Spring Water'},
+      {label: 'Flavoured Water',value: 'Flavoured Water'},
+      {label: 'Soda',value: 'Soda'},
+      {label: 'Cold Drink',value: 'Cold Drink'},
+      {label: 'Sports Drink',value: 'Sports Drink'},
+      {label: 'Energy Drink',value: 'Energy Drink'},
+      {label: 'Cocktail Mix',value: 'Cocktail Mix'},
+      {label: 'Leaf Tea',value: 'Leaf Tea'},
+      {label: 'Green Tea',value: 'Green Tea'},
+      {label: 'Black Tea',value: 'Black Tea'},
+      {label: 'White Tea',value: 'White Tea'},
+      {label: 'Juice',value: 'Juice'},
+      {label: 'Syrup',value: 'Syrup'},
+      {label: 'Concentrate',value: 'Concentrate'},
+      {label: 'Ground Coffee',value: 'Ground Coffee'},
+      {label: 'Instant Coffee',value: 'Instant Coffee'},
+    ]
   },
   {
     label: 'What describes your product?',
@@ -37,9 +56,25 @@ export const questionSet = [
       label: 'Nutritional',
       value: 'NUTRITIONAL',
     },{
+      label: 'Home-made',
+      value: 'HOME-MADE',
+    },{
+      label: 'Fresh',
+      value: 'FRESH',
+    },{
+      label: 'No-preservative',
+      value: 'NO-PRESERVATIVE',
+    },{
+      label: 'Raw',
+      value: 'RAW',
+    },{
+      label: 'Locally-grown',
+      value: 'LOCALLY-GROWN',
+    },{
       label: 'Sugar-free',
       value: 'SUGAR FREE',
     }]
+    
   },
   {
     label: 'What are other benefits of your product?',
@@ -48,6 +83,9 @@ export const questionSet = [
     possibleValues: [{
       label: 'Refreshing',
       value: 'REFRESHING',
+    },{
+      label: 'Revitalizing',
+      value: 'REVITALIZING',
     },{
       label: 'Energizing',
       value: 'ENERGIZING',
@@ -82,6 +120,12 @@ export const questionSet = [
       label: 'Adults',
       value: 'ADULTS',
     },{
+      label: 'Youngsters',
+      value: 'YOUNGSTERS',
+    },{
+      label: 'Pets',
+      value: 'PETS',
+    },{
       label: 'Elderly',
       value: 'ELDERLY',
     }]
@@ -111,6 +155,12 @@ export const questionSet = [
     },{
       label: 'Foodie',
       value: 'FOODIE',
+    },{
+      label: 'Health-conscious',
+      value: 'HEALTH-CONSCIOUS',
+    },{
+      label: 'Fun loving',
+      value: 'FUN LOVING',
     }]
   },
   {
@@ -141,6 +191,30 @@ export const questionSet = [
       radioName: 'radioC',
       label: 'Bold',
       value: 'BOLD',
+    },{
+      radioName: 'radioD',
+      label: 'Playful',
+      value: 'PLAYFUL',
+    },{
+      radioName: 'radioD',
+      label: 'Serious',
+      value: 'SERIOUS',
+    },{
+      radioName: 'radioE',
+      label: 'Minimal',
+      value: 'MINIMAL',
+    },{
+      radioName: 'radioE',
+      label: 'Complex',
+      value: 'COMPLEX',
+    },{
+      radioName: 'radioF',
+      label: 'Economical',
+      value: 'ECONOMICAL',
+    },{
+      radioName: 'radioF',
+      label: 'Luxurious',
+      value: 'LUXURIOUS',
     }
   ],
   },
