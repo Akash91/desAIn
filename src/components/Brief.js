@@ -75,7 +75,7 @@ class Brief extends React.Component {
                 }
                 case 'checkbox': {
                   return(
-                    <div>
+                    <div class="form-group">
                       <Form.Label>{questionObj.label}</Form.Label>
                       {
                         questionObj.possibleValues.map(eachCheckbox => {
@@ -92,7 +92,7 @@ class Brief extends React.Component {
                 }
                 case 'radio': {
                   return(
-                    <div>
+                    <div class="form-group">
                       <Form.Label>{questionObj.label}</Form.Label>
                       {
                         questionObj.possibleValues.map(eachCheckbox => {
