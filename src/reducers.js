@@ -2,6 +2,7 @@ import * as TYPES from './Types';
 
 const getSearchTerms = (formData) => {
   let searchTerms = [];
+  searchTerms = searchTerms.concat(formData.questionName.aboutProduct);
   searchTerms = searchTerms.concat(formData.questionName.emotionalBenefits.map((each) => {
     return each + ' ' + formData.questionName.aboutProduct;
   }));

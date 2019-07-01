@@ -5,6 +5,8 @@ import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
+import PaletteComponent from './PaletteComponent';
+import MediaCard from './MediaCard';
 
 function TabContainer(props) {
   return (
@@ -20,11 +22,19 @@ TabContainer.propTypes = {
 
 const useStyles = makeStyles(theme => ({
   root: {
-    flexGrow: 1,
+    // flexGrow: 1,
     width: '100%',
     backgroundColor: theme.palette.background.paper,
   },
 }));
+
+function printToScreen (cluster, palette) {
+  let jsx = [];
+  for (var i=0;i<cluster.length;i++) {
+    jsx.push(<MediaCard url={cluster[i].props.src} palette={palette[i]} />)
+  }
+  return jsx;
+}
 
 export default function ScrollableTabsButtonAuto(props) {
   const classes = useStyles();
@@ -52,11 +62,15 @@ export default function ScrollableTabsButtonAuto(props) {
           <Tab label="Mood board 5" />
         </Tabs>
       </AppBar>
-      {value === 0 && <TabContainer>{props.cluster[0]}</TabContainer>}
-      {value === 1 && <TabContainer>{props.cluster[1]}</TabContainer>}
-      {value === 2 && <TabContainer>{props.cluster[2]}</TabContainer>}
-      {value === 3 && <TabContainer>{props.cluster[3]}</TabContainer>}
-      {value === 4 && <TabContainer>{props.cluster[4]}</TabContainer>}
+      {console.log('from tab - cluster: ', props.cluster)}
+      {console.log('from tab- palette: ', props.palette)}
+
+      {value === 0 && <TabContainer>{printToScreen(props.cluster[0], props.palette[0])}</TabContainer>}
+      {value === 1 && <TabContainer>{printToScreen(props.cluster[1], props.palette[1])}</TabContainer>}
+      {value === 2 && <TabContainer>{printToScreen(props.cluster[2], props.palette[2])}</TabContainer>}
+      {value === 3 && <TabContainer>{printToScreen(props.cluster[3], props.palette[3])}</TabContainer>}
+      {value === 4 && <TabContainer>{printToScreen(props.cluster[4], props.palette[4])}</TabContainer>}
+
     </div>
   );
 }

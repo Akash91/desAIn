@@ -693,14 +693,20 @@ class ClusterComponent extends Component {
 constructor(props) 
     { 
         super(props); 
-        this.state = { cluster : [] }; 
+        this.state = { cluster : [], palette : [] }; 
     } 
 histograms = [];
 numberOfClusters = 5;  
 palettes = [];
+cl = [[],[],[],[],[]];
+
 
  getHistogram = async () => {
-    let colorThief = new ColorThief();
+    // let colorThief = new ColorThief();
+    // colorThief.getPaletteFromUrl(i.url, (palette) => {
+    //     i.palette = palette;
+    //     this.palettes.push(palette);
+    // });
     // return await forEach(this.props.images, async (i) => {
     //     console.log(i);
     //     debugger;
@@ -782,14 +788,43 @@ palettes = [];
     console.log(this.histograms);
     return this.histograms;
 }
-  
+
+getP = async (cluster) => {
+    // debugger;
+    // console.log('called');
+    // debugger;
+    // let p = []
+    let colorThief = new ColorThief();
+    var k=0;
+    // let palettes = [[],[],[],[],[]];
+    for (let i=0;i<cluster.length;i++) {
+        // console.log('cluster: ', c);
+
+        for (let j of cluster[i]) {
+            // console.log(c)
+
+            // console.log(c)
+            let p = await colorThief.getPaletteFromUrl(j.props.src, (palette) => {
+                // return palette;
+                this.palettes.push(palette);
+            });
+            // console.log(p);
+            
+            
+        }
+        k++;
+}
+// console.log(this.palettes);
+return await this.palettes;
+}
 
 clusterKMeans = () => {
     // this.props.images is now an array of objects that has URL as well as palette
     // console.log(this.histograms.length);
     // console.log(this.histograms.length);
-    this.cluster = kmeans(this.histograms, this.numberOfClusters, {maxIterations: 100});
-    return this.cluster;
+    let cluster = kmeans(this.histograms, this.numberOfClusters, {maxIterations: 100});
+    
+    return cluster;
 }
 
 getPaletteCluster = () => {
@@ -797,12 +832,41 @@ getPaletteCluster = () => {
   // get palette and add it to object
  
     // return <img src={this.props.images[0].url}></img>
+    if(once===true) {
+        return ;
+    }
     once = true;    
     console.log(this.props.images);
     this.getHistogram().then(() => {
         let clusters = this.clusterKMeans();
-        console.log(clusters.clusters);
-        this.setState({cluster: clusters.clusters});
+        clusters = clusters.clusters;
+
+        for (let i=0;i<clusters.length;i++) {
+            this.cl[clusters[i]].push(<img src={this.props.images[i]}></img>)
+        }
+        // console.log(clusters.clusters);
+        this.getP(this.cl).then(() => {
+            setTimeout(()=>{
+                console.log(JSON.stringify(this.palettes)); // correct result
+            var p = [[],[],[],[],[]];
+            var c=0;
+            for (var i=0;i<this.cl.length;i++) {
+                for(var j=0;j<this.cl[i].length;j++) {
+                    // console.log(this.palettes);
+                    p[i].push(this.palettes[c]);
+                    c++;
+                }
+            }
+            console.log(p);
+            this.setState({cluster: this.cl, palette: p}, () => {
+                console.log(this.state);
+            });
+            }, 5000)
+            
+        });
+        // this.setState({cluster: this.cl}, () => {
+        //     console.log(this.state);
+        // });
     });
     
     // return "Hello";
@@ -814,17 +878,30 @@ getPaletteCluster = () => {
     //  return "Hello"
 }
 
-showClusters = () => {
+showClusters =  () => {
+    // debugger;
     if (this.state.cluster.length === 0) {
         return [];
     }
-    let clusters = [[],[],[],[],[]];
-    // clusters.fill([],0,this.numberOfClusters+1);
-    for (let i=0;i<this.state.cluster.length;i++) {
-        clusters[this.state.cluster[i]].push(<img src={this.props.images[i]}></img>)
+    // let clusters = [[],[],[],[],[]];
+    // // clusters.fill([],0,this.numberOfClusters+1);
+    // for (let i=0;i<this.state.cluster.length;i++) {
+    //     clusters[this.state.cluster[i]].push(<img src={this.props.images[i]}></img>)
+    // }
+    // console.log(clusters);
+    console.log('show: ', this.state)
+    if(this.state.palette.length === 0) {
+    //  this.getP(clusters).then(()=>{
+    //      console.log('palettes: ',this.palettes);
+    //      this.setState({palette: this.palettes});
+    //  });
     }
-    console.log(clusters);
-    return <ScrollableTabsButtonAuto cluster={clusters} />;
+
+    // console.log(this.palettes);
+    // this.setState()
+    return <ScrollableTabsButtonAuto cluster={this.state.cluster} palette={this.state.palette} />;
+    
+    
 }
 
      render () {
